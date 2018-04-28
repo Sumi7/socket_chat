@@ -13,10 +13,11 @@ const PORT = process.env.PORT || 3000;
 
 //main
 const PATH = path.join(__dirname, '../public');
-app.use(express.static(PATH));
 
 const SERVER = http.createServer(app);
 const io = socketIO(SERVER);
+
+app.use(express.static(PATH));
 
 io.on("connection", (socket) => {
   console.log("new connection...")
