@@ -4,9 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Chat</title>
+  <style>
+    *{
+      margin: 0;
+    }
+    .wrapper{
+      display: flex;
+      height: 100vh;
+      font-family: monospace;
+      word-spacing: 0.5px;
+    }
+    .chat_sidebar{
+      flex: 1 0.5 10%;
+      background: #141e30;
+      background: -webkit-linear-gradient(to bottom, #141e30, #243b55);
+      background: linear-gradient(to bottom, #141e30, #243b55);
+      color: #c1c1c1;
+    }
+    .chat_sidebar h2{
+      text-align: left;
+      padding: 10px 30px;
+      color: #e6eaee;;
+    }
+    .chat_main{
+      flex: 1 1 70%;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: inset 6px 0px 10px 0px #BBD2C5;
+    }
+    .msg_container{
+      flex-grow: 1;
+      padding: 10px 10px;
+    }
+    .msg_controls{
+      flex-shrink: 0;
+      padding: 7px;
+      background-color: #c1c2c2;
+    }
+    #msg_form{
+      overflow: hidden;
+      border-radius: 5px;
+      border: 1px solid #c1c1c1;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .msg_controls input{
+      height: 37px;
+      width: 90%;
+      padding: 10px 60px 10px 10px;
+      box-sizing: border-box;
+      border: none;
+      overflow: hidden;
+      outline: none;
+      border-radius: 4px;
+      box-shadow: none;
+    }
+    .msg_controls input:active, .msg_controls input:focus{
+      border: 2px solid #00abf7;
+    }
+    .msg_controls button{
+      height: 37px;
+      width: 80px;
+      background: #e5e5be;
+      border: none;
+      box-sizing: border-box;
+      border-radius: 4px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div>YO</div>
+  <div class="wrapper">
+    <div class="chat_sidebar">
+      <h2>Users</h2>
+    </div>
+    <div class="chat_main">
+      <div class="msg_container">
+      </div>
+      <div class="msg_controls">
+        <form id="msg_form">
+          <input id="msg_input" name="message" type="text" placeholder="Enter your message" autofocus autocomplete="off"/>
+          <button type="submit">send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/index.js"></script>
 </body>
 </html>
