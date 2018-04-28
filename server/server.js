@@ -9,7 +9,7 @@ const generateMessage = require('../util/messageGenerator');
 
 //declarations
 const app = express();
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 
 //main
 const PATH = path.join(__dirname, '../public');
@@ -25,7 +25,7 @@ io.on("connection", (socket) => {
 
   socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
 
-  socket.on('createMessage', (msg, cb) => {    
+  socket.on('createMessage', (msg, cb) => {
     io.emit('newMessage', generateMessage(msg.from, msg.text));
     cb();
   });
