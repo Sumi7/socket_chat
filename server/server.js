@@ -40,8 +40,11 @@ io.on("connection", (socket) => {
   });
 
   socket.on('createMessage', (msg, cb) => {
-    io.emit('newMessage', generateMessage(msg.from, msg.text));
-    cb();
+      var user = users.getUser(socket.id);
+      if(user && isRealString(msg)){
+        io.to(user.room).emit('newMessage', generateMessage(user.name, msg.text));
+      }
+      cb();
   });
 
   socket.on('disconnect', () =>{
